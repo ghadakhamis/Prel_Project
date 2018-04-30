@@ -1,0 +1,80 @@
+
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+   <title>ITI Invoice browser</title>
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+</head>
+<body>
+<center><u>You request invoice id</u> : <TMPL_VAR NAME=f_invid> </center>
+
+<table class = "table table-striped">
+   <caption>Striped Table Layout</caption>
+  <tr>
+        <td width=10%>
+        Customer name
+        </td>
+        <td width=20%>
+            <TMPL_VAR NAME=f_custname>
+        </td>
+    </tr>
+
+        <tr>
+        <td width=10%>
+        Invoice Total
+        </td>
+        <td width=20%>
+            <TMPL_VAR NAME=f_invtotal>
+        </td>
+        
+    </tr>
+</table>
+<table class = "table table-striped">
+   <caption>Striped Table Layout</caption>
+   
+   <thead>
+      <tr>
+         <th> Item ID</th>
+         <th>Item name</th>
+         <th> Unit price</th>
+         <th>Quantity sold</th>
+      </tr>
+   </thead>
+   
+   <tbody>
+    <TMPL_LOOP NAME=INV_DETINFO>
+    <tr>
+      <td width=25%>
+
+         <TMPL_VAR NAME=ITEMID>
+      </td>
+      <td width=25%>
+
+         <TMPL_VAR NAME=ITEMUP>
+      </td>
+
+      <td width=25%>
+         <TMPL_VAR NAME=NAME>
+      </td>
+      <td width=25%>
+         <TMPL_VAR NAME=ITEMQU>
+      </td>
+    </tr>
+</TMPL_LOOP>
+   </tbody>
+   
+</table>
+
+</body>
+</html>

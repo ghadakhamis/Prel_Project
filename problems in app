@@ -1,0 +1,11 @@
+1-No Authentication
+2-The Template files and database files are in DocumentRoot
+3-The database in plain text
+4-No field validation enforced, so the app is vulnerable to SQL injection/XSS attacks
+5-Not a user friendly
+6-There is no main menu page
+7-No Insert
+8-No Delete
+9-Some parts are repeated such as getting invoice by id (qi and qq)
+10-Not all errors are handeld
+11-No event logger has been implemented.
