@@ -19,7 +19,7 @@ my $op;
 sub sendErrorMsg {
 my $ErrMsg;
     ($ErrMsg)=@_;
-                    $template = HTML::Template->new(filename => 'errmsg.templ');
+                    $template = HTML::Template->new(filename => '/home/alaa/Downloads/invproj/errmsg.templ');
                     $template->param(ERRMSG => "$ErrMsg");
                     print $template->output;
 }
@@ -39,6 +39,12 @@ sub extractArgs() {
   }
   return %QRYSTR;
 }
+
+sub login (){
+$template = HTML::Template->new(filename => 'test.templ');    
+print $template->output;
+}
+
 
 sub queryInvDetailByInvID {
     my ($template,$inv_id)=@_;
@@ -90,7 +96,7 @@ sub queryInvoice {
         }
     }
     if ( $found ) {
-        $template = HTML::Template->new(filename => 'invquery.templ');    
+        $template = HTML::Template->new(filename => '/home/alaa/Downloads/invproj/invquery.templ');    
         $template->param(f_invid => "$invcomp[0]" ); 
         $template->param(f_custname => "$invcomp[1]" ); 
         $template->param(f_invtotal => "$invcomp[2]" ); 
@@ -133,7 +139,7 @@ foreach $invline ( @allinv ) {
         }
     }    
 }
-        $template = HTML::Template->new(filename => 'querybytotal.templ');    
+        $template = HTML::Template->new(filename => '/home/alaa/Downloads/invproj/querybytotal.templ');    
         $inv_id_href="<a href=invop.pl?op=qi&id=$minv_id>$minv_id</a>";
         $template->param(f_invid => "$inv_id_href" ); 
         $template->param(f_custname => "$mcustname" ); 
@@ -189,7 +195,7 @@ my $tmpinvid;
             push(@invinfo,\%invlineh);
     }
         if ( $found ) {
-        $template = HTML::Template->new(filename => 'queryitemqsold.templ');    
+        $template = HTML::Template->new(filename => '/home/alaa/Downloads/invproj/queryitemqsold.templ');    
         $template->param(f_itemid => "$ITEM_ID" ); 
         $template->param(f_itemname => "$itemname" ); 
         $template->param(f_itemqsold => "$qunt" ); 
@@ -221,6 +227,7 @@ switch ($op) {
     case "qi"   { queryInvoice(%ST); }              #To query 
     case "ql"   { queryLargeInvoiceTotal(); }
     case "qq"   { queryItemQuantity(%ST); }
+    case "login" { login(); }
     else        { 
                     sendErrorMsg("Invalid Operation");
                     exit 1;
